@@ -1,0 +1,89 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 100%;
+}
+
+.left {
+	margin-right: auto;
+	white-space: nowrap;
+}
+
+.right {
+	margin-left: auto;
+	white-space: nowrap;
+}
+
+.one, 
+.two, 
+.four {
+	background-color: #d1e231;
+}
+
+.tooltip {
+	display: none;
+}
+
+
+@media (max-width: 40em) {
+	.left, 
+	.right {
+	position: relative;
+
+	}
+
+	.one,
+	.two {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		width: calc(50% - 60px); 
+	}
+
+	.tooltip {
+		position: absolute;
+		display: none;
+		top: 110%;
+		padding: 10px;
+		background-color: rgb(34, 32, 32);
+		border-radius: 3px;
+		font-size: 10px;
+		color: #fff;
+		animation: movedown 0.1s linear;
+		cursor: help;
+	}
+		.tooltip:after {
+		position: absolute;
+		content: "";
+		bottom: 100%;
+		left: 10%;
+	}
+	
+	.one:hover > .tooltip,
+	.two:hover > .tooltip {
+		display: block;
+	}
+	
+	@keyframes movedown {
+		0% {
+		transform: translateY(10px) rotate(25deg);
+		opacity: 0;
+		}
+		100% {
+		transform: translateY(0) rotate(0deg);
+		opacity: 1;
+		}
+	}
+}
